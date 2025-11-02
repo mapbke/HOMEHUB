@@ -1,0 +1,243 @@
+﻿<Window x:Class="HOMEHUB.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HOMEHUB"
+        mc:Ignorable="d"
+        Title="Калькулятор рецептов" Height="600" Width="900"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <Style x:Key="CardStyle" TargetType="Border">
+            <Setter Property="Background" Value="#E6FFFFFF"/>
+            <Setter Property="BorderBrush" Value="#80FFFFFF"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="15"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <Style x:Key="HeaderTextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#2c3e50"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+
+        <Style x:Key="InputTextBoxStyle" TargetType="TextBox">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="8"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#80FFFFFF"/>
+            <Setter Property="Background" Value="#CCFFFFFF"/>
+            <Setter Property="Foreground" Value="#2c3e50"/>
+        </Style>
+
+        <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#CC4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="5"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#CC45a049"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="SecondaryButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#CC6c757d"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="5"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#CC5a6268"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ResultTextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#2e7d32"/>
+            <Setter Property="Margin" Value="0,2,0,8"/>
+        </Style>
+
+        <Style x:Key="ResultPanelStyle" TargetType="Border">
+            <Setter Property="Background" Value="#CCf0f7f0"/>
+            <Setter Property="BorderBrush" Value="#80FFFFFF"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Padding" Value="15"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
+
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFD0AFAF" Offset="0.017"/>
+            <GradientStop Color="#FF6F7886" Offset="1"/>
+            <GradientStop Color="#FFCAACAC" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+
+    <Grid Margin="15">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+
+        <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Hidden" Margin="0,0,10,0" Background="Transparent">
+            <StackPanel>
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <TextBlock Text="🍳 Калькулятор рецептов" 
+                                  FontSize="20" FontWeight="Bold" 
+                                  Foreground="#2c3e50" Margin="0,0,0,10"/>
+                        <TextBlock Text="Рассчитайте энергетическую ценность и общий вес вашего блюда" 
+                                  Foreground="#2c3e50" TextWrapping="Wrap" FontWeight="SemiBold"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <TextBlock Text="🥩 Первый ингредиент" Style="{StaticResource HeaderTextStyle}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                                <TextBlock Text="Название" FontWeight="SemiBold" Foreground="#2c3e50"/>
+                                <TextBox x:Name="Ingredient1Name" Text="Мука" 
+                                        Style="{StaticResource InputTextBoxStyle}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Margin="0,0,10,0">
+                                <TextBlock Text="Вес (г)" FontWeight="SemiBold" Foreground="#2c3e50"/>
+                                <TextBox x:Name="Ingredient1Weight" Text="200" 
+                                        Style="{StaticResource InputTextBoxStyle}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="Ккал/100г" FontWeight="SemiBold" Foreground="#2c3e50"/>
+                                <TextBox x:Name="Ingredient1Calories" Text="364" 
+                                        Style="{StaticResource InputTextBoxStyle}"/>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <TextBlock Text="🥚 Второй ингредиент" Style="{StaticResource HeaderTextStyle}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                                <TextBox x:Name="Ingredient2Name" Text="Яйца" 
+                                        Style="{StaticResource InputTextBoxStyle}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Margin="0,0,10,0">
+                                <TextBox x:Name="Ingredient2Weight" Text="100" 
+                                        Style="{StaticResource InputTextBoxStyle}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <TextBox x:Name="Ingredient2Calories" Text="157" 
+                                        Style="{StaticResource InputTextBoxStyle}"/>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel>
+                        <TextBlock Text="🥛 Третий ингредиент" Style="{StaticResource HeaderTextStyle}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                                <TextBox x:Name="Ingredient3Name" Text="Молоко" 
+                                        Style="{StaticResource InputTextBoxStyle}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Margin="0,0,10,0">
+                                <TextBox x:Name="Ingredient3Weight" Text="150" 
+                                        Style="{StaticResource InputTextBoxStyle}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <TextBox x:Name="Ingredient3Calories" Text="42" 
+                                        Style="{StaticResource InputTextBoxStyle}"/>
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardStyle}">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="CalculateButton" Content="📊 Рассчитать" 
+                                Style="{StaticResource PrimaryButtonStyle}" Click="CalculateButton_Click"/>
+                        <Button x:Name="ClearButton" Content="🗑️ Очистить" 
+                                Style="{StaticResource SecondaryButtonStyle}" Click="ClearButton_Click"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <Border Grid.Column="1" Style="{StaticResource ResultPanelStyle}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0">
+                    <TextBlock Text="📈 Результаты" 
+                              FontSize="18" FontWeight="Bold" 
+                              Foreground="#2e7d32" Margin="0,0,0,15"
+                              HorizontalAlignment="Center"/>
+                    <StackPanel Margin="0,10,0,0">
+                        <TextBlock Text="Общий вес блюда:" FontWeight="SemiBold" Foreground="#2c3e50"/>
+                        <TextBlock x:Name="TotalWeightResult" Text="0 г" 
+                                  Style="{StaticResource ResultTextStyle}" FontSize="16"/>
+                        <Rectangle Height="1" Fill="#80FFFFFF" Margin="0,10,0,10"/>
+                        <TextBlock Text="Общая энергетическая ценность:" FontWeight="SemiBold" Foreground="#2c3e50"/>
+                        <TextBlock x:Name="TotalCaloriesResult" Text="0 ккал" 
+                                  Style="{StaticResource ResultTextStyle}" FontSize="16"/>
+                        <Rectangle Height="1" Fill="#80FFFFFF" Margin="0,10,0,10"/>
+                        <TextBlock Text="Энергетическая ценность на 100г:" FontWeight="SemiBold" Foreground="#2c3e50"/>
+                        <TextBlock x:Name="CaloriesPer100gResult" Text="0 ккал/100г" 
+                                  Style="{StaticResource ResultTextStyle}" FontSize="16"/>
+                    </StackPanel>
+                    <Border Background="#CCe8f5e9" CornerRadius="8" Padding="10" Margin="0,20,0,0">
+                        <StackPanel>
+                            <TextBlock Text="💡 Подсказка" FontWeight="Bold" Margin="0,0,0,5" Foreground="#2c3e50"/>
+                            <TextBlock Text="Введите вес ингредиентов в граммах и их энергетическую ценность на 100 грамм." 
+                                      TextWrapping="Wrap" FontSize="12" Foreground="#2c3e50"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+
+                <Border Grid.Row="1" Margin="0,20,0,0" Background="Transparent">
+                    <Image Source="/hungry-anime.gif" Stretch="Uniform" 
+                           HorizontalAlignment="Center" VerticalAlignment="Center"
+                           MaxHeight="180" MaxWidth="220"/>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

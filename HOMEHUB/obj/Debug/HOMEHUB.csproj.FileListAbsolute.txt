@@ -1,0 +1,16 @@
+C:\Users\hate\source\repos\HOMEHUB\bin\Debug\HOMEHUB.exe.config
+C:\Users\hate\source\repos\HOMEHUB\bin\Debug\HOMEHUB.exe
+C:\Users\hate\source\repos\HOMEHUB\bin\Debug\HOMEHUB.pdb
+C:\Users\hate\source\repos\HOMEHUB\obj\Debug\HOMEHUB.csproj.AssemblyReference.cache
+C:\Users\hate\source\repos\HOMEHUB\obj\Debug\MainWindow.g.cs
+C:\Users\hate\source\repos\HOMEHUB\obj\Debug\App.g.cs
+C:\Users\hate\source\repos\HOMEHUB\obj\Debug\HOMEHUB_MarkupCompile.cache
+C:\Users\hate\source\repos\HOMEHUB\obj\Debug\HOMEHUB_MarkupCompile.lref
+C:\Users\hate\source\repos\HOMEHUB\obj\Debug\MainWindow.baml
+C:\Users\hate\source\repos\HOMEHUB\obj\Debug\HOMEHUB.g.resources
+C:\Users\hate\source\repos\HOMEHUB\obj\Debug\HOMEHUB.Properties.Resources.resources
+C:\Users\hate\source\repos\HOMEHUB\obj\Debug\HOMEHUB.csproj.GenerateResource.cache
+C:\Users\hate\source\repos\HOMEHUB\obj\Debug\HOMEHUB.csproj.CoreCompileInputs.cache
+C:\Users\hate\source\repos\HOMEHUB\obj\Debug\HOMEHUB.exe
+C:\Users\hate\source\repos\HOMEHUB\obj\Debug\HOMEHUB.pdb
+C:\Users\hate\source\repos\HOMEHUB\obj\Debug\HOMEHUB.exe.config
